@@ -1,2 +1,2 @@
 # PrograWEB
-Repositori para programacion WEB UNAD
+Repositorio para programacion WEB UNAD
