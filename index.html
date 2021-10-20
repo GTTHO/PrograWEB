@@ -269,22 +269,19 @@
                             <tr>
                                 <td class="text-black-50 mb-0">Valor del producto</td>
                                 <td>
-                                    <input type="text" class="form-control inputfield" id="valor" name="valor"
-                                        onChange="validarSiNumero(this.value);">
+                                    <input type="text" class="form-control inputfield" id="valor" name="valor">
                                 </td>
                             </tr>
                             <tr>
                                 <td class="text-black-50 mb-0">Porcentaje Utilidad</td>
                                 <td>
-                                    <input type="text" class="form-control inputfield" id="porcentaje" name="porcentaje"
-                                        onChange="validarSiNumero(this.value);">
+                                    <input type="text" class="form-control inputfield" id="porcentaje" name="porcentaje">
                                 </td>
                             </tr>
                             <tr>
                                 <td class="text-black-50 mb-0">Valor Iva</td>
                                 <td>
-                                    <input type="text" class="form-control inputfield" id="iva" name="iva"
-                                        onChange="validarSiNumero(this.value);">
+                                    <input type="text" class="form-control inputfield" id="iva" name="iva">
                                 </td>
                             </tr>
                         </table>
@@ -313,7 +310,7 @@
                     </div>
                     <div class="col-lg-4">
                         <form name="formulario3" id="formulario3" method="post" enctype="multipart/form-data"
-                            action="#">
+                        action="Javascript: void(0);" onsubmit="convertirUnidades();">
 
                             <p class="text-black-50 mb-0">Calcular medidas de almacenamiento</p>
 
@@ -321,8 +318,7 @@
                                 <tr>
                                     <td class="text-black-50 mb-0">Valor a calcular</td>
                                     <td>
-                                        <input type="text" class="form-control inputfield" id="valor" name="valor"
-                                            onChange="validarSiNumero(this.value);">
+                                        <input type="text" class="form-control inputfield" id="data" name="data">
                                     </td>
                                 </tr>
                                 <tr>
@@ -351,10 +347,10 @@
                                 </tr>
                             </table>
                             <p class="text-black-50 mb-0"> Valor Convertido:
-                                <input type="text" class="form-control inputfield" id="data_value" name="data_value"
+                                <input type="text" class="form-control inputfield" id="valor_convertido" name="valor_convertido"
                                     value="" size="10" maxlength="10">
                             </p>
-                            <button type="button" onclick="convertirtUnidades()" ; />Calcular</button>
+                            <input name="submit" type="submit" value="Calcular" />
                         </form>
                     </div>
                 </div>

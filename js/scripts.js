@@ -36,52 +36,139 @@ function calcula_precio() {
     };
          
  
-    function convertirtUnidades() {
-		switch(origen_data) {
-			case 'bits':
-				switch(destino_data) {
-					case 'bits':
-						calculation = valor;
-						break;
-					case 'bytes':
-						calculation = valor / 8;
-						calculation = bytesToSize(calculation, 'byte')
-						break;
-					case 'kb':
-						calculation = valor / 8;
-						calculation = bytesToSize(calculation, 'kb');
-						break;
-					case 'mb':
-						calculation = valor / 8;
-						calculation = bytesToSize(calculation, 'mb');
-						break;
-					case 'gb':
-						calculation = valor / 8;
-						calculation = bytesToSize(calculation, 'gb');
-						break;
-					case 'tb':
-						calculation = valor / 8;
-						calculation = bytesToSize(calculation, 'tb');
-						break;
-				}
-				break;
-		}
-		document.getElementById("data_value").value = valor + " " + origen_data + ' = ' + calculation + " " + destino_data;
-	};
+    function convertirUnidades() {
+        
 
+            var data = document.getElementById("data").value;
+            var origen_data = document.getElementById("origen_data").value;
+            var destino_data = document.getElementById("destino_data").value;
+            var calculation = "";
+            var value_modifier = 1024;
 
-window.addEventListener('DOMContentLoaded', event => {
+            switch(origen_data) {
+                case "bytes":
+                    switch(destino_data) {
+                        case "bytes":
+                            calculation = data;
+                            break;
+                        case "kb":
+                            calculation = calculation_replicator(data, value_modifier, 1)
+                            break;
+                        case "mb":
+                            calculation = calculation_replicator(data, value_modifier, 2)
+                            break;
+                        case "gb":
+                            calculation = calculation_replicator(data, value_modifier, 3)
+                            break;
+                        case "tb":
+                            calculation = calculation_replicator(data, value_modifier, 4)
+                            break;
+                    }
+                    break;
+                case "kb":
+                    switch(destino_data) {
+                        case "bytes":
+                            calculation = calculation_replicate_partwo(data, value_modifier, 1);
+                            break;
+                        case "kb":
+                            calculation = data;
+                            break;
+                        case "mb":
+                            calculation = calculation_replicator(data, value_modifier, 1)
+                            break;
+                        case "gb":
+                            calculation = calculation_replicator(data, value_modifier, 2)
+                            break;
+                        case "tb":
+                            calculation = calculation_replicator(data, value_modifier, 3)
+                            break;
+                    }
+                    break;
+                case "mb":
+                    switch(destino_data) {
+                        case "bytes":
+                            calculation = calculation_replicate_partwo(data, value_modifier, 2);
+                            break;
+                        case "kb":
+                            calculation = calculation_replicate_partwo(data, value_modifier, 1);
+                            break;
+                        case "mb":
+                            calculation = data;
+                            break;
+                        case "gb":
+                            calculation = calculation_replicator(data, value_modifier, 1)
+                            break;
+                        case "tb":
+                            calculation = calculation_replicator(data, value_modifier, 2)
+                            break;
+                    }
+                    break;
+                case "gb":
+                    switch(destino_data) {
+                        case "bytes":
+                            calculation = calculation_replicate_partwo(data, value_modifier, 3);
+                            break;
+                        case "kb":
+                            calculation = calculation_replicate_partwo(data, value_modifier, 2);
+                            break;
+                        case "mb":
+                            calculation = calculation_replicate_partwo(data, value_modifier, 1);
+                            break;
+                        case "gb":
+                            calculation = data;
+                            break;
+                        case "tb":
+                            calculation = calculation_replicator(data, value_modifier, 1)
+                            break;
+                    }
+                    break;
+                case "tb":
+                    switch(destino_data) {
+                        case "bytes":
+                            calculation = calculation_replicate_partwo(data, value_modifier, 4);
+                            break;
+                        case "kb":
+                            calculation = calculation_replicate_partwo(data, value_modifier, 3);
+                            break;
+                        case "mb":
+                            calculation = calculation_replicate_partwo(data, value_modifier, 2);
+                            break;
+                        case "gb":
+                            calculation = calculation_replicate_partwo(data, value_modifier, 1);
+                            break;
+                        case "tb":
+                            calculation = data;
+                            break;
+                    }
+                    break;
+            }
+            document.getElementById("valor_convertido").value = calculation + " " + destino_data;
+        }
+        function calculation_replicator(calculation, value_modifier, number_of_times) {
+            for (var x = 0; x <= number_of_times-1; x++) {
+                calculation = calculation / value_modifier;
+            }
+            return calculation;
+        }
+        function calculation_replicate_partwo(calculation, value_modifier, number_of_times) {
+            for (var x = 0; x <= number_of_times-1; x++) {
+                calculation = calculation * value_modifier;
+            }
+            return calculation;
+        };
+
+window.addEventListener("DOMContentLoaded", event => {
 
     // Navbar shrink function
     var navbarShrink = function () {
-        const navbarCollapsible = document.body.querySelector('#mainNav');
+        const navbarCollapsible = document.body.querySelector("#mainNav");
         if (!navbarCollapsible) {
             return;
         }
         if (window.scrollY === 0) {
-            navbarCollapsible.classList.remove('navbar-shrink')
+            navbarCollapsible.classList.remove("navbar-shrink")
         } else {
-            navbarCollapsible.classList.add('navbar-shrink')
+            navbarCollapsible.classList.add("navbar-shrink")
         }
     };
 
@@ -89,25 +176,25 @@ window.addEventListener('DOMContentLoaded', event => {
     navbarShrink();
 
     // Shrink the navbar when page is scrolled
-    document.addEventListener('scroll', navbarShrink);
+    document.addEventListener("scroll", navbarShrink);
 
     // Activate Bootstrap scrollspy on the main nav element
-    const mainNav = document.body.querySelector('#mainNav');
+    const mainNav = document.body.querySelector("#mainNav");
     if (mainNav) {
         new bootstrap.ScrollSpy(document.body, {
-            target: '#mainNav',
+            target: "#mainNav",
             offset: 74,
         });
     };
 
     // Collapse responsive navbar when toggler is visible
-    const navbarToggler = document.body.querySelector('.navbar-toggler');
+    const navbarToggler = document.body.querySelector(".navbar-toggler");
     const responsiveNavItems = [].slice.call(
-        document.querySelectorAll('#navbarResponsive .nav-link')
+        document.querySelectorAll("#navbarResponsive .nav-link")
     );
     responsiveNavItems.map(function (responsiveNavItem) {
-        responsiveNavItem.addEventListener('click', () => {
-            if (window.getComputedStyle(navbarToggler).display !== 'none') {
+        responsiveNavItem.addEventListener("click", () => {
+            if (window.getComputedStyle(navbarToggler).display !== "none") {
                 navbarToggler.click();
             }
         });
