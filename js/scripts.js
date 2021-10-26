@@ -28,10 +28,11 @@ function calcula_precio() {
      
     //Y aqui realizamos la ecuación.
     
-        var ganancia = valor * (1 + (parseInt(porcentaje)/100)); 
-        var precioConImpuestos = (1 + (parseInt(iva)/100)) * ganancia;
-        document.getElementById("ganancia").value = ganancia - valor;
-        document.getElementById("precio").value = precioConImpuestos;
+        var ganancia = valor * (parseInt(porcentaje)/100); 
+        var precioConImpuestos = valor * (parseInt(iva)/100);
+        var precioventa = parseInt(valor) + parseInt(ganancia) + parseInt(precioConImpuestos);
+        document.getElementById("ganancia").value = ganancia;
+        document.getElementById("precio").value = precioventa;
 
     };
          
