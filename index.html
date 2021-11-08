@@ -51,7 +51,7 @@
     </nav>
     <!-- Presentacion -->
     <header class="masthead" id="Presentacion">
-        <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
+        <div class="container px-4 px-lg-5 d-flex h-100 align-items-center">
             <div class="d-flex justify-content-center">
                 <div class="text-center">
                     <h1 class="mx-auto my-0 text-uppercase">PC Electronics</h1>
@@ -64,178 +64,249 @@
     </header>
 
     <!-- Administrador -->
-    <section class="administrador-section text-center" id="administrador">
+    <section class="administrador-section text-justify" id="administrador">
         <div class="container px-4 px-lg-5">
-            <div class="row gx-4 gx-lg-5 justify-content-center">
-                <div class="col-lg-8">
-                    <h2 class="text-white mb-4">Administrador</h2>
-                    <p class="text-white-50">
-                        Sección dispuesta para Fase 4
-                    </p>
+            <div class="row gx-4 gx-lg-5 align-items-center">
+                <h2 class="text-white mb-4 text-center align-items-center">Administrador</h2>
+                <p class="text-white-50 text-lg-left">
+                    En esta sección se puede crear tano la base de datos como las tablas de esta. Por favor 
+                    ingresar los datos solicitados para ejecutar cada una de las acciones. 
+                </p>
+                <div class="col-lg-6 align-items-center">
+                            <div class="card py-4 h-100 align-items-center">
+                                <form name="formcreatedb" id="formcreatedb" method="post" enctype="multipart/form-data" 
+                                action="./php/create_db.php" target="none">
+                                    <p class="text-black-50 mb-4">Ingrese los valores para crear la base de datos</p>
+                                    <table>
+                                        <tr>
+                                            <td class="text-black-50 mb-0">Usuario</td>
+                                            <td>
+                                                <input type="text" class="form-control inputfield" id="user" name="user">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-black-50 mb-0">Password</td>
+                                            <td>
+                                                <input type="text" class="form-control inputfield" id="passwd" name="passwd">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-black-50 mb-0">Servidor</td>
+                                            <td>
+                                                <input type="text" class="form-control inputfield" id="servidor" name="servidor">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-black-50 mb-0">Nombre de la Base de datos</td>
+                                            <td>
+                                                <input type="text" class="form-control inputfield" id="dbname" name="dbname">
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <button type="submit">Crear DB</button>
+                                </form>
+                            </div>
                 </div>
-                <div class="col-lg-4">
-
+                <div class="col-lg-6 align-items-center">
+                        <div class="card py-4 h-100 align-items-center">
+                            <form name="formcreatetable" id="formcreatetable" method="post" enctype="multipart/form-data" action="./php/create_table.php" target="_blank">
+                                    <p class="text-black-50 mb-4">Ingrese los valores para crear la tabla</p>
+                                    <table>
+                                        <tr>
+                                            <td class="text-black-50 mb-0">Usuario</td>
+                                            <td>
+                                                <input type="text" class="form-control inputfield" id="user" name="user">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-black-50 mb-0">Password</td>
+                                            <td>
+                                                <input type="text" class="form-control inputfield" id="passwd" name="passwd">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-black-50 mb-0">Servidor</td>
+                                            <td>
+                                                <input type="text" class="form-control inputfield" id="servidor" name="servidor">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-black-50 mb-0">Database</td>
+                                            <td>
+                                                <input type="text" class="form-control inputfield" id="dbname" name="dbname">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-black-50 mb-0">Nombre de la tabla</td>
+                                            <td>
+                                                <input type="text" class="form-control inputfield" id="tablename" name="tablename">
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <button type="submit">Crear tabla</button>
+                            </form>
+                        </div>
                 </div>
             </div>
         </div>
+        <br>
     </section>
 
     <!-- Inventario -->
-    <section class="Inventario-section text-center" id="Inventario">
+    <section class="Inventario-section text-justify" id="Inventario">
         <div class="container px-4 px-lg-5">
             <div class="row gx-5 mb-4 mb-lg-5 align-items-center">
+                <h2 class="text-white mb-4 text-center">
+                    Inventario
+                </h2>
+                <p class="text-white-50 text-lg-left">
+                    En el inventario se puede ingresar, modificar, eliminar y consultar un producto. 
+                    Los formularios solo estan diseñados, ya que serán usados en la siguiente fase
+                    para interactuar con la base de datos del aplicativo web.
+                </p>
                 <div class="col-xl-7 col-lg-6"><img class="img-fluid mb-3 mb-lg-0" src="img/keyboard.jpg" alt="..." />
-                    <p class="text-white-50 text-lg-left">
-                        En el inventario se puede ingresar, modificar, eliminar y consultar un producto,
-                        <br>
-                        Los formularios solo estan diseñados, ya que serán usados en la siguiente fase
-                        para interactuar con la base de datos del aplicativo web.
-                    </p>
                 </div>
                 <div class="col-xl-5 col-lg-6">
                     <div class="featured-text text-center text-lg-left">
-                        <h2 class="text-white mb-4">
-                            Inventario
-                        </h2>
-
                         <p class="text-white mb-2">Ingresar Producto</p>
-                        <form name="formulario4" id="formulario4" method="post" enctype="multipart/form-data"
-                            action="#"></form>
-                        <div class="col-md-20 mb-7 mb-md-0">
-                            <div class="card py-4 h-100">
-                                <table>
-                                    <tr>
-                                        <td class="text-black-50 mb-0">Código</td>
-                                        <td>
-                                            <input type="text" class="form-control inputfield">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-black-50 mb-0">Nombre</td>
-                                        <td>
-                                            <input type="text" class="form-control inputfield">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-black-50 mb-0">Marca</td>
-                                        <td>
-                                            <input type="text" class="form-control inputfield">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-black-50 mb-0">Precio de compra</td>
-                                        <td>
-                                            <input type="text" class="form-control inputfield">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-black-50 mb-0">Cantidad comprada</td>
-                                        <td>
-                                            <input type="text" class="form-control inputfield">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>
-                                            <button type="button" onclick="registrar_prod()">Registrar</button>
-                                        </td>
-                                    </tr>
-                                </table>
+                        <form name="formulario4" id="formulario4" method="post" enctype="multipart/form-data" action="./php/insert.php" target="_blank">
+                            <div class="col-md-20 mb-7 mb-md-0">
+                                <div class="card py-4 h-100">
+                                    <table>
+                                        <tr>
+                                            <td class="text-black-50 mb-0">Código</td>
+                                            <td>
+                                                <input type="text" class="form-control inputfield" id="id" name="id">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-black-50 mb-0">Nombre</td>
+                                            <td>
+                                                <input type="text" class="form-control inputfield" id="name" name="name">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-black-50 mb-0">Marca</td>
+                                            <td>
+                                                <input type="text" class="form-control inputfield" id="marca" name="marca">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-black-50 mb-0">Precio de compra</td>
+                                            <td>
+                                                <input type="text" class="form-control inputfield" id="precio" name="precio">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-black-50 mb-0">Cantidad comprada</td>
+                                            <td>
+                                                <input type="text" class="form-control inputfield" id="cantidad" name="cantidad">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>
+                                                <button type="submit">Registrar</button>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
                             </div>
-                        </div>
+                        </form>
                         <br>
 
                         <p class="text-white mb-4">Actualizar Producto</p>
-                        <form name="formulario6" id="formulario6" method="post" enctype="multipart/form-data"
-                            action="#"></form>
-                        <div class="col-md-20 mb-7 mb-md-0">
-                            <div class="card py-4 h-100">
-                                <table>
-                                    <tr>
-                                        <td class="text-black-50 mb-0">Código</td>
-                                        <td>
-                                            <input type="text" class="form-control inputfield">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-black-50 mb-0">Nombre</td>
-                                        <td>
-                                            <input type="text" class="form-control inputfield">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-black-50 mb-0">Marca</td>
-                                        <td>
-                                            <input type="text" class="form-control inputfield">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-black-50 mb-0">Precio de compra</td>
-                                        <td>
-                                            <input type="text" class="form-control inputfield">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-black-50 mb-0">Cantidad comprada</td>
-                                        <td>
-                                            <input type="text" class="form-control inputfield">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>
-                                            <button type="button" onclick="modificar_prod()">Modificar</button>
-                                        </td>
-                                    </tr>
-                                </table>
+                        <form name="formulario6" id="formulario6" method="post" enctype="multipart/form-data" action="./php/update.php" target="_blank">
+                            <div class="col-md-20 mb-7 mb-md-0">
+                                <div class="card py-4 h-100">
+                                    <table>
+                                        <tr>
+                                            <td class="text-black-50 mb-0">Código</td>
+                                            <td>
+                                                <input type="text" class="form-control inputfield" id="id" name="id">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-black-50 mb-0">Nombre</td>
+                                            <td>
+                                                <input type="text" class="form-control inputfield" id="name" name="name">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-black-50 mb-0">Marca</td>
+                                            <td>
+                                                <input type="text" class="form-control inputfield" id="marca" name="marca">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-black-50 mb-0">Precio de compra</td>
+                                            <td>
+                                                <input type="text" class="form-control inputfield" id="precio" name="precio">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-black-50 mb-0">Cantidad comprada</td>
+                                            <td>
+                                                <input type="text" class="form-control inputfield" id="cantidad" name="cantidad">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>
+                                                <button type="submit">Modificar</button>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
                             </div>
-                        </div>
+                        </form>
                         <br>
 
                         <p class="text-white mb-4">Eliminar Producto</p>
-                        <form name="formulario7" id="formulario7" method="post" enctype="multipart/form-data" action="#"></form>
-                        <div class="col-md-20 mb-7 mb-md-0">
-                            <div class="card py-4 h-100">
-                                <table>
-                                    <tr>
-                                        <td class="text-black-50 mb-0">Código</td>
-                                        <td>
-                                            <input type="text" class="form-control inputfield">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>
-                                            <button type="button" onclick="eliminar_prod()">Borrar</button>
-                                        </td>
-                                    </tr>
-                                </table>
+                        <form name="formulario7" id="formulario7" method="post" enctype="multipart/form-data" action="./php/delete.php" target="_blank">
+                            <div class="col-md-20 mb-7 mb-md-0">
+                                <div class="card py-4 h-100">
+                                    <table>
+                                        <tr>
+                                            <td class="text-black-50 mb-0">Código</td>
+                                            <td>
+                                                <input type="text" class="form-control inputfield" id="id" name="id">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>
+                                                <button type="submit">Borrar</button>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
                             </div>
-                        </div>
+                        </form>
                         <br>
 
                         <p class="text-white mb-4">Consultar Producto</p>
-                        <form name="formulario8" id="formulario8" method="post" enctype="multipart/form-data"
-                            action="#"></form>
-                        <div class="col-md-20 mb-7 mb-md-0">
-                            <div class="card py-4 h-100">
-                                <table>
-                                    <tr>
-                                        <td class="text-black-50 mb-0">Código</td>
-                                        <td>
-                                            <input type="text" class="form-control inputfield">
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>
-                                            <button type="button" onclick="consultar_prod()">Consultar</button>
-                                        </td>
-                                    </tr>
-                                </table>
+                        <form name="formulario8" id="formulario8" method="post" enctype="multipart/form-data" action="./php/select.php" target="_blank">
+                            <div class="col-md-20 mb-7 mb-md-0">
+                                <div class="card py-4 h-100">
+                                    <table>
+                                        <tr>
+                                            <td class="text-black-50 mb-0">Código</td>
+                                            <td>
+                                                <input type="text" class="form-control inputfield" id="id" name="id">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>
+                                                <button type="submit">Consultar</button>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div> 
                             </div>
-                        </div>
-                        <br><br>
+                        </form>
+                        <br>
                     </div>
                 </div>
             </div>
@@ -245,16 +316,19 @@
     <!-- Utilidades -->
     <section class="Utilidades-section bg-light" id="Utilidades">
         <div class="container px-4 px-lg-5">
-            <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="row gx-4 gx-lg-5 align-items-center">
+                <h2 class="text-white mb-4 text-center">
+                    Utilidades
+                </h2>
                 <div class="col-lg-6">
-                    <h2 class="text-black-50 mb-0">Utilidades</h2>
                     <p class="text-black-50 mb-0">
-                        Ingresar un valor de compra de un producto, un porcentaje de utilidad,
-                        un porcentaje de impuesto IVA y un botón que permita calcular el valor
-                        de venta del producto y el valor en pesos de la ganancia.
+                        Ingresar un valor de compra de un producto, un % de utilidad,
+                        un % de impuesto IVA, cuando lo haga oprima calcular y el sistema
+                        generara el valor de venta del producto y el valor en pesos 
+                        de la ganancia.
                     </p>
                 </div>
-                <div class="col-lg-4">
+                <div class="col-lg-6">
                     <form name="formulario2" id="formulario2" method="post" enctype="multipart/form-data" action="#">
 
                         <p class="text-black-50 mb-0">Calcular Valor y Ganancia</p>
@@ -295,21 +369,21 @@
                 <hr>
                 <hr>
                 <br>
-                <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="row gx-4 gx-lg-5 align-items-center">
                     <div class="col-lg-6">
                         <p class="text-black-50 mb-0">
                             Utilidad para calcular calcular la equivalencia entre tamaño de datos
                             (byte, kilobyte, megabyte, gigabyte, terabyte).
                         </p>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-6">
                         <form name="formulario3" id="formulario3" method="post" enctype="multipart/form-data"
                         action="Javascript: void(0);" onsubmit="convertirUnidades();">
 
                             <p class="text-black-50 mb-0">Calcular medidas de almacenamiento</p>
 
                             <table>
-                                <tr>
+                                <tr>    
                                     <td class="text-black-50 mb-0">Valor a calcular</td>
                                     <td>
                                         <input type="text" class="form-control inputfield" id="data" name="data">
