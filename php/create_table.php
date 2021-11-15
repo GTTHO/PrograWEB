@@ -1,9 +1,9 @@
 <?php
-$servername = $_POST['servidor'];
-$username = $_POST['user'];
-$password = $_POST['passwd'];
-$db = $_POST['dbname'];
-$table = $_POST['tablename'];
+$servername = $_POST['servidortb'];
+$username = $_POST['usertb'];
+$password = $_POST['passwdtb'];
+$db = $_POST['dbnametb'];
+$table = $_POST['table'];
 
 // Crear conexión
 try {
@@ -13,8 +13,7 @@ try {
  
     $conn->setAttribute(PDO::ATTR_ERRMODE,
                 PDO::ERRMODE_EXCEPTION);
- 
-    echo "Connected successfully ";
+
 } catch(PDOException $e) {
     echo "Connection failed: "
       . $e->getMessage();

@@ -11,11 +11,7 @@
     <meta name="author" content="Autor Graycales editado por Johan Mogollon" />
     <meta name="keywords" content="HTML">
     <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
-    <!-- Google fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet" />
+
     <!-- CSS de Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
     <!-- Bootstrap CSS -->
@@ -51,7 +47,7 @@
     </nav>
     <!-- Presentacion -->
     <header class="masthead" id="Presentacion">
-        <div class="container px-4 px-lg-5 d-flex h-100 align-items-center">
+        <div class="container px-4 px-lg-5 d-flex h-100 align-items-center justify-content-center">
             <div class="d-flex justify-content-center">
                 <div class="text-center">
                     <h1 class="mx-auto my-0 text-uppercase">PC Electronics</h1>
@@ -62,7 +58,6 @@
             </div>
         </div>
     </header>
-
     <!-- Administrador -->
     <section class="administrador-section text-justify" id="administrador">
         <div class="container px-4 px-lg-5">
@@ -74,316 +69,458 @@
                 </p>
                 <div class="col-lg-6 align-items-center">
                             <div class="card py-4 h-100 align-items-center">
-                                <form name="formcreatedb" id="formcreatedb" method="post" enctype="multipart/form-data" 
-                                action="./php/create_db.php" target="none">
+                                <script>
+                                        function creardb(servidor, user, passwd, dbname){
+                                                var parametros = {
+                                                    "servidor" : servidor,
+                                                    "user" : user,
+                                                    "passwd" : passwd,
+                                                    "dbname" : dbname
+                                                };
+                                                $.ajax({
+                                                        data:  parametros,
+                                                        url:   'php/create_db.php',
+                                                        type:  'post',
+                                                        beforeSend: function () {
+                                                                $("#resultadodb").html("Procesando, espere por favor...");
+                                                        },
+                                                        success:  function (response) {
+                                                                $("#resultadodb").html(response);
+                                                        }
+                                                });
+                                        }
+                                </script>
+                                     
                                     <p class="text-black-50 mb-4">Ingrese los valores para crear la base de datos</p>
                                     <table>
                                         <tr>
-                                            <td class="text-black-50 mb-0">Usuario</td>
-                                            <td>
-                                                <input type="text" class="form-control inputfield" id="user" name="user">
-                                            </td>
+                                             <td class="text-black-50 mb-0">Usuario</td>
+                                             <td>
+                                                 <input type="text" class="form-control inputfield" id="user" name="user">
+                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="text-black-50 mb-0">Password</td>
-                                            <td>
-                                                <input type="text" class="form-control inputfield" id="passwd" name="passwd">
-                                            </td>
+                                             <td class="text-black-50 mb-0">Password</td>
+                                             <td>
+                                                 <input type="text" class="form-control inputfield" id="passwd" name="passwd">
+                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="text-black-50 mb-0">Servidor</td>
-                                            <td>
-                                                <input type="text" class="form-control inputfield" id="servidor" name="servidor">
-                                            </td>
+                                             <td class="text-black-50 mb-0">Servidor</td>
+                                             <td>
+                                                 <input type="text" class="form-control inputfield" id="servidor" name="servidor">
+                                             </td>
                                         </tr>
                                         <tr>
-                                            <td class="text-black-50 mb-0">Nombre de la Base de datos</td>
+                                             <td class="text-black-50 mb-0">Nombre de la Base de datos</td>
+                                             <td>
+                                                 <input type="text" class="form-control inputfield" id="dbname" name="dbname">
+                                             </td>
+                                        </tr>
+                                        <tr>
                                             <td>
-                                                <input type="text" class="form-control inputfield" id="dbname" name="dbname">
+                                            <input type="button" href="javascript:;" onclick="creardb($('#Servidor').val(), $('#user').val(), $('#passwd').val(), $('#dbname').val());return false;" value="Crear DB"/>
                                             </td>
                                         </tr>
                                     </table>
-                                    <button type="submit">Crear DB</button>
-                                </form>
-                            </div>
-                </div>
-                <div class="col-lg-6 align-items-center">
-                        <div class="card py-4 h-100 align-items-center">
-                            <form name="formcreatetable" id="formcreatetable" method="post" enctype="multipart/form-data" action="./php/create_table.php" target="_blank">
-                                    <p class="text-black-50 mb-4">Ingrese los valores para crear la tabla</p>
-                                    <table>
-                                        <tr>
-                                            <td class="text-black-50 mb-0">Usuario</td>
-                                            <td>
-                                                <input type="text" class="form-control inputfield" id="user" name="user">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-black-50 mb-0">Password</td>
-                                            <td>
-                                                <input type="text" class="form-control inputfield" id="passwd" name="passwd">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-black-50 mb-0">Servidor</td>
-                                            <td>
-                                                <input type="text" class="form-control inputfield" id="servidor" name="servidor">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-black-50 mb-0">Database</td>
-                                            <td>
-                                                <input type="text" class="form-control inputfield" id="dbname" name="dbname">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-black-50 mb-0">Nombre de la tabla</td>
-                                            <td>
-                                                <input type="text" class="form-control inputfield" id="tablename" name="tablename">
-                                            </td>
-                                        </tr>
-                                    </table>
-                                    <button type="submit">Crear tabla</button>
-                            </form>
+                                    <br/>
+                                    Resultado: <span id="resultadodb"> </span>
+                                    <br/>
                         </div>
                 </div>
-            </div>
+				
+				
+                <div class="col-lg-6 align-items-center">
+                    <div class="card py-4 h-100 align-items-center">
+                        <script>
+								function creartabla(servidortb, usertb, passwdtb, dbnametb, table){
+                                        var parametros = {
+                                            "servidortb" : servidortb,
+                                            "usertb" : usertb,
+                                            "passwdtb" : passwdtb,
+                                            "dbnametb" : dbnametb,
+                                            "table" : table,
+                                            };
+                                        $.ajax({
+                                            data:  parametros,
+                                            url:   'php/create_table.php',
+                                            type:  'post',
+                                            beforeSend: function () {
+                                                    $("#resultadotb").html("Procesando, espere por favor...");
+                                                },
+                                            success:  function (response) {
+                                                    $("#resultadotb").html(response);
+                                                }
+                                            });
+                                        };
+                        </script>
+                             
+                            <p class="text-black-50 mb-4">Ingrese los valores para crear la tabla</p>
+                            <table>
+                                <tr>
+                                     <td class="text-black-50 mb-0">Usuario</td>
+                                     <td>
+                                         <input type="text" class="form-control inputfield" id="usertb" name="usertb">
+                                     </td>
+                                </tr>
+                                <tr>
+                                     <td class="text-black-50 mb-0">Password</td>
+                                     <td>
+                                         <input type="text" class="form-control inputfield" id="passwdtb" name="passwdtb">
+                                     </td>
+                                </tr>
+                                <tr>
+                                     <td class="text-black-50 mb-0">Servidor</td>
+                                     <td>
+                                         <input type="text" class="form-control inputfield" id="servidortb" name="servidortb">
+                                     </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-black-50 mb-0">Nombre de la Base de datos</td>
+                                    <td>
+                                        <input type="text" class="form-control inputfield" id="dbnametb" name="dbnametb">
+                                    </td>
+                               </tr>
+                               <tr>
+                                <tr>
+                                    <td class="text-black-50 mb-0">Nombre de la tabla</td>
+                                    <td>
+                                        <input type="text" class="form-control inputfield" id="table" name="table">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                    <input type="button" href="javascript:;" onclick="creartabla($('#Servidortb').val(), $('#usertb').val(), $('#passwdtb').val(), $('#dbnametb').val(), $('#table').val());return false;" value="Crear Tabla"/>
+                                    </td>
+                                </tr>
+                            </table>
+                            <br/>
+                            Resultado: <span id="resultadotb"> </span>
+                            <br/>
+                </div>
         </div>
         <br>
     </section>
 
-    <!-- Inventario -->
-    <section class="Inventario-section text-justify" id="Inventario">
-        <div class="container px-4 px-lg-5">
-            <div class="row gx-5 mb-4 mb-lg-5 align-items-center">
-                <h2 class="text-white mb-4 text-center">
-                    Inventario
-                </h2>
-                <p class="text-white-50 text-lg-left">
-                    En el inventario se puede ingresar, modificar, eliminar y consultar un producto. 
-                    Los formularios solo estan diseñados, ya que serán usados en la siguiente fase
-                    para interactuar con la base de datos del aplicativo web.
-                </p>
-                <div class="col-xl-7 col-lg-6"><img class="img-fluid mb-3 mb-lg-0" src="img/keyboard.jpg" alt="..." />
-                </div>
-                <div class="col-xl-5 col-lg-6">
-                    <div class="featured-text text-center text-lg-left">
-                        <p class="text-white mb-2">Ingresar Producto</p>
-                        <form name="formulario4" id="formulario4" method="post" enctype="multipart/form-data" action="./php/insert.php" target="_blank">
-                            <div class="col-md-20 mb-7 mb-md-0">
-                                <div class="card py-4 h-100">
-                                    <table>
-                                        <tr>
-                                            <td class="text-black-50 mb-0">Código</td>
-                                            <td>
-                                                <input type="text" class="form-control inputfield" id="id" name="id">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-black-50 mb-0">Nombre</td>
-                                            <td>
-                                                <input type="text" class="form-control inputfield" id="name" name="name">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-black-50 mb-0">Marca</td>
-                                            <td>
-                                                <input type="text" class="form-control inputfield" id="marca" name="marca">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-black-50 mb-0">Precio de compra</td>
-                                            <td>
-                                                <input type="text" class="form-control inputfield" id="precio" name="precio">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-black-50 mb-0">Cantidad comprada</td>
-                                            <td>
-                                                <input type="text" class="form-control inputfield" id="cantidad" name="cantidad">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td></td>
-                                            <td>
-                                                <button type="submit">Registrar</button>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </div>
-                        </form>
-                        <br>
+        <!-- Inventario -->
+        <section class="Inventario-section text-justify" id="Inventario">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-5 mb-4 mb-lg-5 align-items-center">
+                    <h2 class="text-white mb-4 text-center">
+                        Inventario
+                    </h2>
+                    <p class="text-white-50 text-lg-left">
+                        En el inventario se puede ingresar, modificar, eliminar y consultar un producto. 
+                        Los formularios solo estan diseñados, ya que serán usados en la siguiente fase
+                        para interactuar con la base de datos del aplicativo web.
+                    </p>
+                    <div class="col-xl-7 col-lg-6"><img class="img-fluid mb-3 mb-lg-0" src="img/keyboard.jpg" alt="..." />
+                    </div>
+                    <div class="col-xl-5 col-lg-6">
+                        <div class="featured-text text-center text-lg-left">
+                            <p class="text-white mb-2">Ingresar Producto</p>
+                                <div class="col-md-20 mb-7 mb-md-0">
+                                    <div class="card py-4 h-100">
+ 
+                                        <script>
+                                            function insertardb(idcod, name, marca, preciodb, cantcomp){
+                                                    var parametros = {
+                                                        "idcod" : idcod,
+                                                        "name" : name,
+                                                        "marca" : marca,
+                                                        "preciodb" : preciodb,
+                                                        "cantcomp" : cantcomp,
+                                                    };
+                                                    $.ajax({
+                                                            data:  parametros,
+                                                            url:   'php/insert.php',
+                                                            type:  'post',
+                                                            beforeSend: function () {
+                                                                    $("#resultadoin").html("Procesando, espere por favor...");
+                                                            },
+                                                            success:  function (response) {
+                                                                    $("#resultadoin").html(response);
+                                                            }
+                                                    });
+                                            }
+                                        </script>
+                                         
+                                        <p class="text-black-50 mb-4">Ingrese los valores que desea insertar</p>
+                                        <table>
+                                            <tr>
+                                                <td class="text-black-50 mb-0">Código</td>
+                                                <td>
+                                                    <input type="text" class="form-control inputfield" id="idcod" name="icod">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-black-50 mb-0">Nombre</td>
+                                                <td>
+                                                    <input type="text" class="form-control inputfield" id="name" name="name">
+                                                </td>
+                                            </tr>
+                                            <tr>                                                
+                                                <td class="text-black-50 mb-0">Marca</td>
+                                                <td>
+                                                    <input type="text" class="form-control inputfield" id="marca" name="marca">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-black-50 mb-0">Precio de compra</td>
+                                                <td>
+                                                    <input type="text" class="form-control inputfield" id="preciodb" name="preciodb">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-black-50 mb-0">Cantidad comprada</td>
+                                                <td>
+                                                    <input type="text" class="form-control inputfield" id="cantcomp" name="cantcomp">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <input type="button" href="javascript:;" onclick="insertardb($('#idcod').val(), $('#name').val(), $('#marca').val(), $('#preciodb').val(), $('#cantcomp').val());return false;" value="Insertar Registro"/>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <br/>
+                                        Resultado: <span id="resultadoin"> </span>
+                                        <br/>
 
-                        <p class="text-white mb-4">Actualizar Producto</p>
-                        <form name="formulario6" id="formulario6" method="post" enctype="multipart/form-data" action="./php/update.php" target="_blank">
-                            <div class="col-md-20 mb-7 mb-md-0">
-                                <div class="card py-4 h-100">
-                                    <table>
-                                        <tr>
-                                            <td class="text-black-50 mb-0">Código</td>
-                                            <td>
-                                                <input type="text" class="form-control inputfield" id="id" name="id">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-black-50 mb-0">Nombre</td>
-                                            <td>
-                                                <input type="text" class="form-control inputfield" id="name" name="name">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-black-50 mb-0">Marca</td>
-                                            <td>
-                                                <input type="text" class="form-control inputfield" id="marca" name="marca">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-black-50 mb-0">Precio de compra</td>
-                                            <td>
-                                                <input type="text" class="form-control inputfield" id="precio" name="precio">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-black-50 mb-0">Cantidad comprada</td>
-                                            <td>
-                                                <input type="text" class="form-control inputfield" id="cantidad" name="cantidad">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td></td>
-                                            <td>
-                                                <button type="submit">Modificar</button>
-                                            </td>
-                                        </tr>
-                                    </table>
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
-                        <br>
-
-                        <p class="text-white mb-4">Eliminar Producto</p>
-                        <form name="formulario7" id="formulario7" method="post" enctype="multipart/form-data" action="./php/delete.php" target="_blank">
-                            <div class="col-md-20 mb-7 mb-md-0">
-                                <div class="card py-4 h-100">
-                                    <table>
-                                        <tr>
-                                            <td class="text-black-50 mb-0">Código</td>
-                                            <td>
-                                                <input type="text" class="form-control inputfield" id="id" name="id">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td></td>
-                                            <td>
-                                                <button type="submit">Borrar</button>
-                                            </td>
-                                        </tr>
-                                    </table>
+                            <br>
+    
+                            <p class="text-white mb-4">Actualizar Producto</p>
+                                <div class="col-md-20 mb-7 mb-md-0">
+                                    <div class="card py-4 h-100">
+                                        <script>
+                                            function updatedb(id2, name2, marca2, preciodb2, cantcomp2){
+                                                    var parametros = {
+                                                        "id2" : id2,
+                                                        "name2" : name2,
+                                                        "marca2" : marca2,
+                                                        "preciodb2" : preciodb2,
+                                                        "cantcomp2" : cantcomp2,
+                                                    };
+                                                    $.ajax({
+                                                            data:  parametros,
+                                                            url:   'php/update.php',
+                                                            type:  'post',
+                                                            beforeSend: function () {
+                                                                    $("#resultadoup").html("Procesando, espere por favor...");
+                                                            },
+                                                            success:  function (response) {
+                                                                    $("#resultadoup").html(response);
+                                                            }
+                                                    });
+                                            }
+                                        </script>
+                                        <table>
+                                            <tr>
+                                                <td class="text-black-50 mb-0">Código</td>
+                                                <td>
+                                                    <input type="text" class="form-control inputfield" id="id2" name="id2">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-black-50 mb-0">Nombre</td>
+                                                <td>
+                                                    <input type="text" class="form-control inputfield" id="name2" name="name2">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-black-50 mb-0">Marca</td>
+                                                <td>
+                                                    <input type="text" class="form-control inputfield" id="marca2" name="marca2">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-black-50 mb-0">Precio de compra</td>
+                                                <td>
+                                                    <input type="text" class="form-control inputfield" id="preciodb2" name="preciodb2">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-black-50 mb-0">Cantidad comprada</td>
+                                                <td>
+                                                    <input type="text" class="form-control inputfield" id="cantcomp2" name="cantcomp2">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <input type="button" href="javascript:;" onclick="updatedb($('#id2').val(), $('#name2').val(), $('#marca2').val(), $('#preciodb2').val(), $('#cantcomp2').val());return false;" value="Actualizar Registro"/>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        <br/>
+                                        Resultado: <span id="resultadoup"> </span>
+                                        <br/>
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
-                        <br>
-
-                        <p class="text-white mb-4">Consultar Producto</p>
-                        <form name="formulario8" id="formulario8" method="post" enctype="multipart/form-data" action="./php/select.php" target="_blank">
-                            <div class="col-md-20 mb-7 mb-md-0">
-                                <div class="card py-4 h-100">
-                                    <table>
-                                        <tr>
-                                            <td class="text-black-50 mb-0">Código</td>
-                                            <td>
-                                                <input type="text" class="form-control inputfield" id="id" name="id">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td></td>
-                                            <td>
-                                                <button type="submit">Consultar</button>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </div> 
-                            </div>
-                        </form>
-                        <br>
+                            <br>
+    
+                            <p class="text-white mb-4">Eliminar Producto</p>
+                                <div class="col-md-20 mb-7 mb-md-0">
+                                    <div class="card py-4 h-100">
+                                        <script>
+                                            function deletedb(id3){
+                                                    var parametros = {
+                                                        "id3" : id3,
+                                                    };
+                                                    $.ajax({
+                                                            data:  parametros,
+                                                            url:   'php/delete.php',
+                                                            type:  'post',
+                                                            beforeSend: function () {
+                                                                    $("#resultadode").html("Procesando, espere por favor...");
+                                                            },
+                                                            success:  function (response) {
+                                                                    $("#resultadode").html(response);
+                                                            }
+                                                    });
+                                            }
+                                        </script>
+                                        <table>
+                                            <tr>
+                                                <td class="text-black-50 mb-0">Código</td>
+                                                <td>
+                                                    <input type="text" class="form-control inputfield" id="id3" name="id3">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <tr>
+                                                    <td>
+                                                        <input type="button" href="javascript:;" onclick="deletedb($('#id3').val())" value="Eliminar Registro"/>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <br/>
+                                            Resultado: <span id="resultadode"> </span>
+                                            <br/>
+                                    </div>
+                                </div>
+                            <br>
+    
+                            <p class="text-white mb-4">Consultar Producto</p>
+                                <div class="col-md-20 mb-7 mb-md-0">
+                                    <div class="card py-4 h-100">
+                                        <script>
+                                            function selectdb(id4){
+                                                    var parametros = {
+                                                        "id4" : id4,
+                                                    };
+                                                    $.ajax({
+                                                            data:  parametros,
+                                                            url:   'php/select.php',
+                                                            type:  'post',
+                                                            beforeSend: function () {
+                                                                    $("#resultadose").html("Procesando, espere por favor...");
+                                                            },
+                                                            success:  function (response) {
+                                                                    $("#resultadose").html(response);
+                                                            }
+                                                    });
+                                            }
+                                        </script>
+                                        <table>
+                                            <tr>
+                                                <td class="text-black-50 mb-0">Código</td>
+                                                <td>
+                                                    <input type="text" class="form-control inputfield" id="id4" name="id4">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <tr>
+                                                    <td>
+                                                        <input type="button" href="javascript:;" onclick="selectdb($('#id4').val())" value="Consultar Registro"/>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            <br/>
+                                            Resultado: <span id="resultadose"> </span>
+                                            <br/>
+                                    </div> 
+                                </div>
+                            <br>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
 
     <!-- Utilidades -->
     <section class="Utilidades-section bg-light" id="Utilidades">
         <div class="container px-4 px-lg-5">
-            <div class="row gx-4 gx-lg-5 align-items-center">
-                <h2 class="text-white mb-4 text-center">
-                    Utilidades
-                </h2>
+
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <h2 class="text-black-50 mb-0 featured-text text-center text-lg-left">Utilidades</h2>
                 <div class="col-lg-6">
                     <p class="text-black-50 mb-0">
-                        Ingresar un valor de compra de un producto, un % de utilidad,
-                        un % de impuesto IVA, cuando lo haga oprima calcular y el sistema
-                        generara el valor de venta del producto y el valor en pesos 
-                        de la ganancia.
+                        Ingresar un valor de compra de un producto, un porcentaje de utilidad,
+                        un porcentaje de impuesto IVA y un botón que permita calcular el valor
+                        de venta del producto y el valor en pesos de la ganancia.
                     </p>
                 </div>
-                <div class="col-lg-6">
-                    <form name="formulario2" id="formulario2" method="post" enctype="multipart/form-data" action="#">
+                <div class="col-lg-4">
+                        <form name="formulario2" id="formulario2" method="post" enctype="multipart/form-data" action="#">
 
-                        <p class="text-black-50 mb-0">Calcular Valor y Ganancia</p>
+                            <p class="text-black-50 mb-0">Calcular Valor y Ganancia</p>
 
-                        <table>
-                            <tr>
-                                <td class="text-black-50 mb-0">Valor del producto</td>
-                                <td>
-                                    <input type="text" class="form-control inputfield" id="valor" name="valor">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-black-50 mb-0">Porcentaje Utilidad</td>
-                                <td>
-                                    <input type="text" class="form-control inputfield" id="porcentaje" name="porcentaje">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-black-50 mb-0">Valor Iva</td>
-                                <td>
-                                    <input type="text" class="form-control inputfield" id="iva" name="iva">
-                                </td>
-                            </tr>
-                        </table>
-                        <p class="text-black-50 mb-0"> Precio final:
-                            <input type="text" class="form-control inputfield" id="precio" name="precio" value=""
-                                size="10" maxlength="10">
-                        </p>
-                        <p class="text-black-50 mb-0"> Ganancia en pesos:
-                            <input type="text" class="form-control inputfield" id="ganancia" name="ganancia" value=""
-                                size="10" maxlength="10">
-                        </p>
-                        <button type="button" onclick="calcula_precio()">Calcular</button>
-                    </form>
-                    <br>
+                            <table>
+                                <tr>
+                                    <td class="text-black-50 mb-0">Valor del producto</td>
+                                    <td>
+                                        <input type="text" class="form-control inputfield" id="valor" name="valor">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-black-50 mb-0">Porcentaje Utilidad</td>
+                                    <td>
+                                        <input type="text" class="form-control inputfield" id="porcentaje" name="porcentaje">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-black-50 mb-0">Valor Iva</td>
+                                    <td>
+                                        <input type="text" class="form-control inputfield" id="iva" name="iva">
+                                    </td>
+                                </tr>
+                            </table>
+                            <p class="text-black-50 mb-0"> Precio final:
+                                <input type="text" class="form-control inputfield" id="precio" name="precio" value=""
+                                    size="10" maxlength="10">
+                            </p>
+                            <p class="text-black-50 mb-0"> Ganancia en pesos:
+                                <input type="text" class="form-control inputfield" id="ganancia" name="ganancia" value=""
+                                    size="10" maxlength="10">
+                            </p>
+                            <button type="button" onclick="calcula_precio();">Calcular</button>
+                        </form>
+                        <br>
                 </div>
                 <br>
                 <hr>
                 <hr>
                 <br>
-                <div class="row gx-4 gx-lg-5 align-items-center">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
                     <div class="col-lg-6">
                         <p class="text-black-50 mb-0">
                             Utilidad para calcular calcular la equivalencia entre tamaño de datos
                             (byte, kilobyte, megabyte, gigabyte, terabyte).
                         </p>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-4">
                         <form name="formulario3" id="formulario3" method="post" enctype="multipart/form-data"
                         action="Javascript: void(0);" onsubmit="convertirUnidades();">
 
                             <p class="text-black-50 mb-0">Calcular medidas de almacenamiento</p>
 
                             <table>
-                                <tr>    
+                                <tr>
                                     <td class="text-black-50 mb-0">Valor a calcular</td>
                                     <td>
                                         <input type="text" class="form-control inputfield" id="data" name="data">
@@ -530,7 +667,9 @@
         crossorigin="anonymous"></script>
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
-
+    <!-- Ajax Script-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js">
+    </script>
 </body>
 
 </html>

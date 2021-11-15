@@ -14,8 +14,6 @@ try {
     // to exception
     $conn->setAttribute(PDO::ATTR_ERRMODE,
                 PDO::ERRMODE_EXCEPTION);
- 
-    echo "Connected successfully ";
 } catch(PDOException $e) {
     echo "Connection failed: "
       . $e->getMessage();
@@ -24,7 +22,7 @@ try {
 // Crear database
 $sql = "CREATE DATABASE $db";
 if ($conn->query($sql) == TRUE) {
-  echo " Database created successfully";
+  echo " Database created successfully \n";
 } else {
   echo " Error creating database: " . $conn->error;
 }

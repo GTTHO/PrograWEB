@@ -4,7 +4,7 @@ $username = root;
 $password = 12345678;
 $db = unad43;
 $table = tabla43;
-$id = $_POST['id'];
+$id = $_POST['id3'];
 
 // Crear conexión
 try {

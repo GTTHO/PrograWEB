@@ -4,11 +4,11 @@ $username = root;
 $password = 12345678;
 $db = unad43;
 $table = tabla43;
-$id = $_POST['id'];
+$id = $_POST['idcod'];
 $name = $_POST['name'];
 $marca = $_POST['marca'];
-$precio = $_POST['precio'];
-$cantidad = $_POST['cantidad'];
+$precio = $_POST['preciodb'];
+$cantidad = $_POST['cantcomp'];
 
 // Crear conexión
 try {
