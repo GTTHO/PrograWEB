@@ -89,7 +89,27 @@
                                                                 $("#resultadodb").html(response);
                                                         }
                                                 });
+                                        }                                        
+                                        function backupdb(servidor, user, passwd, dbname){
+                                                var parametros = {
+                                                    "servidor" : servidor,
+                                                    "user" : user,
+                                                    "passwd" : passwd,
+                                                    "dbname" : dbname
+                                                };
+                                                $.ajax({
+                                                        data:  parametros,
+                                                        url:   'php/backup_db.php',
+                                                        type:  'post',
+                                                        beforeSend: function () {
+                                                                $("#resultadodb").html("Procesando, espere por favor...");
+                                                        },
+                                                        success:  function (response) {
+                                                                $("#resultadodb").html(response);
+                                                        }
+                                                });
                                         }
+
                                 </script>
                                      
                                     <p class="text-black-50 mb-4">Ingrese los valores para crear la base de datos</p>
@@ -120,7 +140,12 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                            <input type="button" href="javascript:;" onclick="creardb($('#Servidor').val(), $('#user').val(), $('#passwd').val(), $('#dbname').val());return false;" value="Crear DB"/>
+                                            <input type="button" href="javascript:;" onclick="creardb($('#servidor').val(), $('#user').val(), $('#passwd').val(), $('#dbname').val());return false;" value="Crear DB"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <input type="button" href="javascript:;" onclick="backupdb($('#servidor').val(), $('#user').val(), $('#passwd').val(), $('#dbname').val());return false;" value="Crear Respaldo DB"/>
                                             </td>
                                         </tr>
                                     </table>

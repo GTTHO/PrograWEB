@@ -1,7 +1,7 @@
 <?php
 include_once 'connection.php';
 include_once '../fpdf/fpdf.php';
-$table = tabla43;
+$table = 'tabla43';
 
 class PDF extends FPDF
 {
